@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wesbos/Learn-Redux.git"
+    "url": "https://github.com/mitrais-cdc-js/React-Redux-Material-UI-JWT.git"
   },
   "author": "Aris",
   "license": "Mitrais",
-  "homepage": "https://github.com/wesbos/Learn-Redux",
+  "homepage": "https://github.com/mitrais-cdc-js/React-Redux-Material-UI-JWT",
   "dependencies": {
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.4",
@@ -50,6 +50,7 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "rimraf": "^2.5.2",
+    "socket.io": "^1.7.2",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.0.0",
