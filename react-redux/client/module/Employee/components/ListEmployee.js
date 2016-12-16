@@ -32,6 +32,7 @@ const ListEmployee = React.createClass({
     handleRowSelection(selected){            
         choosen.push(selected);
     },
+    
     handleDelete(){
         this.handleCloseModal();
         // these bunch of codes are used in deleting items from checkbox selection
