@@ -1,3 +1,4 @@
+import io from 'socket.io-client';
 
 let base = "http://localhost:57446/api";
 
@@ -80,6 +81,8 @@ let SHOW_SNACKBAR_ACTION = "SHOW_SNACKBAR_ACTION";
 let CLOSE_SNACKBAR_ACTION = "CLOSE_SNACKBAR_ACTION";  
 
 let CREDENTIAL = "credential";
+let SOCKET = io.connect('http://localhost:3000');
+	
 export default {
   LOAD_MAP,
   GET_MAP_MARKER,
@@ -133,4 +136,5 @@ export default {
   EMPLOYEE_LIST_LOADED , 
   EMPLOYEE_SAVED,
   EMPLOYEE_LOADED,
+  SOCKET,
 };

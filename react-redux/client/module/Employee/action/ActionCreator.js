@@ -12,8 +12,9 @@ export function LoadEmployee(){
     }	
 }
 
-export function DeleteEmployeeBatch(batch){		
+export function DeleteEmployeeBatch(batch){			
 	return (dispatch, state) => {	
+
 		utils.delBatchRequest(constants.EMPLOYEE_DEL_BATCH_API,batch,dispatch,state,constants.EMPLOYEE_LIST_LOADED);					
     }	
 }

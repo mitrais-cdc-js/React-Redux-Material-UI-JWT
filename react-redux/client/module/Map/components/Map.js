@@ -32,6 +32,7 @@ import { SketchPicker } from 'react-color';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import {red500, yellow500, blue500,green500,orange900,red900} from 'material-ui/styles/colors';
+import SelectField from 'material-ui/SelectField';
 
 const Map = React.createClass({
 	getInitialState () {		
@@ -340,11 +341,10 @@ const Map = React.createClass({
 						<TextField	floatingLabelText="Place Name" id="PlaceName"  value={this.state.PlaceName} onChange={this.handleTextField}  fullWidth={true}  /><br />
 						<TextField	floatingLabelText="Address" id="Address" value={this.state.Address}  onChange={this.handleTextField}  fullWidth={true}  /><br />
 						<TextField	floatingLabelText="Total Employee" id="TotalEmployee"  value={this.state.TotalEmployee} onChange={this.handleTextField} fullWidth={true}   /><br />
-						<TextField id="PhoneNumber"	floatingLabelText="Phone Number" id="PhoneNumber" value={this.state.PhoneNumber} onChange={this.handleTextField}  fullWidth={true}   /><br />
-						<span>Area : </span>
-						<DropDownMenu value={this.state.Area} onChange={this.handleAreaChange}  >
-							{menuitem}
-						</DropDownMenu>			
+						<TextField id="PhoneNumber"	floatingLabelText="Phone Number" id="PhoneNumber" value={this.state.PhoneNumber} onChange={this.handleTextField}  fullWidth={true}   /><br />						
+						<SelectField floatingLabelText="Area" value={this.state.Area} onChange={this.handleAreaChange} autoWidth={true} >
+						{menuitem}
+						</SelectField>					
 					</CardText>
 				</Card>
 				
