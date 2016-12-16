@@ -3,6 +3,8 @@ import constants from './constants';
 import request from 'superagent';
 import queryString from 'query-string';
 
+// These bunch of functions are for the common used in components such as calling the API etc.
+
 export function showResult(err,dispatch,currentState,nextAction,result,nextPath,message){
     if(err){
         if(err.status == 401){

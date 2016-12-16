@@ -1,8 +1,10 @@
 import constants from '../../../constants';
 
+// Every reducer must be registered in client/reducer/index.js
+
 let initialState={
-	username:'aris',
-	password:'password',
+	username:'',
+	password:'',
 	message:''	
 }
 

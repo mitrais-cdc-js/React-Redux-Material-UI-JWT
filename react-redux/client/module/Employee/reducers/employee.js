@@ -1,7 +1,8 @@
 import constants from '../../../constants';
 
-let initialState = {}
+// Every reducer must be registered in client/reducer/index.js
 
+let initialState = {}
 function employee(state = initialState,action){		
 	switch (action.type) {
 		case constants.EMPLOYEE_LOADED:

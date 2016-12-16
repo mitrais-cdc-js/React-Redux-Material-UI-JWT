@@ -35,8 +35,7 @@ const Main = React.createClass({
 	},
 	handleChangeRoute(route){
 		this.handleClose();
-		this.context.router.push(route);
-		console.log('test');
+		this.context.router.push(route);		
 	},
 	render(){		
 		

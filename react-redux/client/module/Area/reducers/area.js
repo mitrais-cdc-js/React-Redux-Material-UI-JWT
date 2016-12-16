@@ -1,5 +1,7 @@
 import constants from '../../../constants';
 
+// Every reducer must be registered in client/reducer/index.js
+
 let initialState = {}
 function area(state = initialState,action){		
 	switch (action.type) {

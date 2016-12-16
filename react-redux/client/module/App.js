@@ -12,8 +12,8 @@ import Main from './Main';
 import React from 'react';
 import store from '../store';
 
-// this method will return all reducers/states that have been gathered in reducer/index.js 
-// all state will be converted to props
+// this method will return all reducers/states that have been gathered in client/reducer/index.js 
+// all states will be converted to props , so all components will recognize all the states
 function mapStateToProps(state, ownProps){
 	return store.getState();				
 }
@@ -30,8 +30,7 @@ function mapDispatchToProps(dispatch){
 		},dispatch);
 }
 
-// this App component will wrap to Main.js ( smart component )
+// this App component will wrap to client/module/Main.js ( smart component )
 const App = connect(mapStateToProps,mapDispatchToProps)(Main);
-
 
 export default App;

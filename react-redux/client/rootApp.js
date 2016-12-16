@@ -21,8 +21,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import queryString from 'query-string';
 import * as auth from './authentication/auth'
 
-
+// this method ( injectTapEventPlugin ) is for material UI
 injectTapEventPlugin();
+
  const requireAuthentication = (nextState, replace) => {
 	 if(auth.checkAuth()){
 		 var obj={};
