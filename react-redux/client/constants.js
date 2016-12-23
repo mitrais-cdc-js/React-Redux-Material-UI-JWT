@@ -37,11 +37,11 @@ let AREA_LOADED="AREA_LOADED";
 let employee = base+"/EmployeesApi";
 let EMPLOYEE_CREATE_NEW_API = employee+"/CreateNewEmployee";
 let EMPLOYEE_GET_ALL_API = employee+"/GetEmployee";
+let EMPLOYEE_GET_ALL_PAGING_API = employee+"/GetListPagingEmployee";
 let EMPLOYEE_GET_BY_ID_API = employee+"/GetEmployee/";
 let EMPLOYEE_SAVE_API = employee+"/PostEmployee";
 let EMPLOYEE_EDIT_API = employee+"/PutEmployee/";
 let EMPLOYEE_DEL_BATCH_API = employee+"/DeleteBatchEmployee";
-
 
 let EMPLOYEE_GET_ALL_ACTION ="EMPLOYEE_GET_ALL_ACTION";
 let EMPLOYEE_SAVE_ACTION='EMPLOYEE_SAVE_ACTION';
@@ -51,7 +51,6 @@ let EMPLOYEE_EDIT_ACTION = 'EMPLOYEE_EDIT_ACTION';
 let EMPLOYEE_LIST_LOADED = "EMPLOYEE_LIST_LOADED";
 let EMPLOYEE_SAVED = "EMPLOYEE_SAVED";
 let EMPLOYEE_LOADED="EMPLOYEE_LOADED";
-
 
 
 //login
@@ -79,6 +78,7 @@ let FETCHING_DATA = "FETCHING_DATA";
 let FETCHING_DONE = "FETCHING_DONE";
 let SHOW_SNACKBAR_ACTION = "SHOW_SNACKBAR_ACTION";
 let CLOSE_SNACKBAR_ACTION = "CLOSE_SNACKBAR_ACTION";  
+let LIST_LOADED = "LIST_LOADED";
 
 let CREDENTIAL = "credential";
 let SOCKET = io.connect('http://localhost:3000');
@@ -113,6 +113,7 @@ export default {
   LOGOUT_ACTION,
   LOGIN_FAILED,
   PROP_CHANGE,
+  LIST_LOADED,
   PROP_RESET,
   FETCHING_DATA,
   FETCHING_DONE,
@@ -122,6 +123,7 @@ export default {
   CREATE_NEW_AREA_API,
 
   EMPLOYEE_GET_ALL_API , 
+  EMPLOYEE_GET_ALL_PAGING_API,
   EMPLOYEE_SAVE_API ,
   EMPLOYEE_GET_BY_ID_API , 
   EMPLOYEE_EDIT_API , 

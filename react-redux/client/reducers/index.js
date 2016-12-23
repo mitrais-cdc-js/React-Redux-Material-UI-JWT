@@ -10,6 +10,7 @@ import employee from '../module/Employee/reducers/employee';
 
 import loadingBar from '../common/reducers/loadingBar';
 import snackBar from '../common/reducers/snackBar';
+import table from '../common/reducers/table';
 
 //Gather all reducer in here
 
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 	employee,
 	loadingBar,
 	snackBar,
+	table,
 	routing:routerReducer
 });
 

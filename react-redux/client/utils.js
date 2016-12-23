@@ -5,7 +5,7 @@ import queryString from 'query-string';
 
 // These bunch of functions are for the common used in components such as calling the API etc.
 
-export function showResult(err,dispatch,currentState,nextAction,result,nextPath,message){
+export function showResult(err,dispatch,currentState){
     if(err){
         if(err.status == 401){
             var obj={};
@@ -13,28 +13,10 @@ export function showResult(err,dispatch,currentState,nextAction,result,nextPath,
             const stringified = queryString.stringify(obj);            
 		    dispatch(push('/Login/'+stringified));		
 	    }
-    }    
-    else{
-        if(message != null){
-            // invoke the snackBar to show up when successfully save, edit , delete
-            dispatch({
-                type:constants.SHOW_SNACKBAR_ACTION,
-                payload:{
-                    message:message
-                }
-            })
-        }
-        if(nextPath != null && nextPath!= undefined){
-            dispatch(push(nextPath));
-        }
-        else{
-            dispatch({ type:nextAction, data:JSON.parse(result.text) });
-        }
-        
-    }
+    }        
 }
 
-export function getRequest(url,queryStringObject,dispatch,currentState,nextAction){
+export function getRequest(url,queryStringObject,dispatch,currentState,callback){
     dispatch({type:constants.FETCHING_DATA}); // invoke loadingBar Reducer to SHOW loadingBar
     request
     .get(url)
@@ -42,7 +24,12 @@ export function getRequest(url,queryStringObject,dispatch,currentState,nextActio
     .set({Authorization:"Bearer "+getToken()})
     .end((err, res) => {
         dispatch({type:constants.FETCHING_DONE}); // invoke loadingBar Reducer to HIDE loadingBar
-        showResult(err,dispatch,currentState,nextAction,res,null,null);						
+        showResult(err,dispatch,currentState);	
+        if(callback!=null&& callback !=undefined){
+            if(!err){
+                callback(err,res);
+            }            
+        }
     });
 }
 
@@ -57,7 +44,7 @@ export function delRequest(url,id,dispatch,currentState,nextAction){
     });
 }
 
-export function delBatchRequest(url,batch,dispatch,currentState,nextAction){
+export function delBatchRequest(url,batch,dispatch,currentState,callback){
     dispatch({type:constants.FETCHING_DATA}); 
     var objBatch={};
     objBatch.Batch = batch;    
@@ -67,23 +54,35 @@ export function delBatchRequest(url,batch,dispatch,currentState,nextAction){
     .send(objBatch)			    		
     .end((err, res) => {
         dispatch({type:constants.FETCHING_DONE}); 
-        showResult(err,dispatch,currentState,nextAction,res,null,"Data has been deleted");		
+        showResult(err,dispatch,currentState);	
+        if(callback!=null&& callback !=undefined){
+            if(!err){
+                callback(err,res);
+            }            
+        }
     });
 }
 
-export function postRequest(url,obj,dispatch,currentState,nextAction,nextPath){
+export function postRequest(url,obj,dispatch,currentState,callback){
     dispatch({type:constants.FETCHING_DATA});  
     request
    	.post(url)		
     .set({Authorization:"Bearer "+getToken()})
     .send(obj)		
     .end((err, res) => {
-        dispatch({type:constants.FETCHING_DONE}); 
-        showResult(err,dispatch,currentState,nextAction,res,nextPath,"Data has been saved");		
+        dispatch({type:constants.FETCHING_DONE});         
+        showResult(err,dispatch,currentState);		
+        if(callback!=null&& callback !=undefined){
+            if(!err){
+                callback(err,res);
+            }
+            
+        }
+        
     });
 }
 
-export function putRequest(url,obj,dispatch,currentState,nextAction,nextPath){
+export function putRequest(url,obj,dispatch,currentState,callback){
     dispatch({type:constants.FETCHING_DATA}); 
     request
     .put(url)		
@@ -91,7 +90,10 @@ export function putRequest(url,obj,dispatch,currentState,nextAction,nextPath){
     .send(obj)		
     .end((err, res) => {
         dispatch({type:constants.FETCHING_DONE}); 
-        showResult(err,dispatch,currentState,nextAction,res,nextPath,"Data has been edited");
+        showResult(err,dispatch,currentState);
+        if(callback!=null&& callback !=undefined){
+            callback(err,res);
+        }
     });
 }
 
@@ -102,4 +104,28 @@ function getToken(){
 		return credObj.access_token;
 	}	
 	return null;
+}
+
+
+export function dispatchWithDataJsonFormat(type,dispatch,res){
+    dispatch({
+		type,
+		data:JSON.parse(res.text)
+	})
+	
+}
+
+export function dispatchNonJsonFormat(type,dispatch,res){	
+    dispatch({
+		type,
+		data:res.text
+	})
+}
+
+
+export function showSnackBar(dispatch,message){	
+    dispatch({
+		type: constants.SHOW_SNACKBAR_ACTION,
+		data:{ message }
+	})
 }

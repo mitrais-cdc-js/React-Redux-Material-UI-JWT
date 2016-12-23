@@ -16,7 +16,7 @@ function snackBar(state = false,action){
             var newState={};
 			Object.assign(newState,state);
 			newState.openSnackBar = true;
-            newState.messageSnackBar = action.payload.message;
+            newState.messageSnackBar = action.data.message;
 			return newState;			
 		case constants.CLOSE_SNACKBAR_ACTION:
 			return initialState;
