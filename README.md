@@ -1,4 +1,4 @@
-# React Redux Map with Material UI , Socket.IO and .NET Core
+# React Redux Map with Material UI , Socket.IO and .NET Core and JWT ( JSON Web Token )
 
 <strong>Follow these instructions step by step from Front to backend</strong> <br>
 
